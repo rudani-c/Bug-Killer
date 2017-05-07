@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:ads="http://schemas.android.com/apk/res-auto"
+    android:background="@drawable/titlescreen"
+    tools:context="com.example.rudani_c.bugsmasher.MainActivity">
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="  HighScore"
+        android:id="@+id/button_highscore"
+        android:padding="15dp"
+        android:background="#9d48fb06"
+        android:layout_centerHorizontal="true"
+        android:layout_alignBottom="@+id/button_play" />
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Settings"
+        android:id="@+id/button_settings"
+        android:padding="15dp"
+        android:background="#9d48fb06"
+        android:layout_marginLeft="15dp"
+        android:layout_alignBaseline="@+id/button_highscore"
+        android:layout_alignBottom="@+id/button_highscore"
+        android:layout_toEndOf="@+id/button_highscore" />
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Play"
+        android:id="@+id/button_play"
+        android:padding="15dp"
+        android:background="#9d48fb06"
+        android:layout_marginRight="15dp"
+        android:layout_marginBottom="19dp"
+        android:layout_marginEnd="16dp"
+        android:layout_alignParentBottom="true"
+        android:layout_toStartOf="@+id/button_highscore" />
+
+</RelativeLayout>
+

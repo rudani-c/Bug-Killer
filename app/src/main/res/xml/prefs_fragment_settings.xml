@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8"?>
+<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android">
+    <PreferenceCategory
+        android:title="The Settings">
+        <Preference
+            android:title="Last Game Score"
+            android:summary="0"
+            android:key="highscore"
+            android:defaultValue="true"
+            android:selectable="false" />
+        <Preference
+            android:title="@string/app_name"
+            android:summary="Copyright 2016 crudani"
+            android:selectable="false" />
+        <Preference
+            android:title="Company Information"
+            android:summary="crudani"
+            android:selectable="false"/>
+        <Preference
+            android:title="Share"
+            android:summary="Share this app with your friends"
+            android:selectable="true"
+            android:key="key_share"
+            android:icon="@android:drawable/ic_menu_share" />
+        <CheckBoxPreference
+            android:title="Play Background Music"
+            android:key="key_music"
+            android:defaultValue="true"/>
+        <CheckBoxPreference
+            android:title="Play Sound"
+            android:key="key_sound"
+            android:defaultValue="true"/>
+    </PreferenceCategory>
+</PreferenceScreen>
