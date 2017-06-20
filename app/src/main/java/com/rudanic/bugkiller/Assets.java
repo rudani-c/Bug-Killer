@@ -22,6 +22,9 @@ public class Assets {
     static Bitmap bigroach1;
     static Bitmap bigroach2;
     static Bitmap bigroachdead;
+    static Bitmap lady1;
+    static Bitmap lady2;
+    static Bitmap lady3;
     static Bitmap life;
 
     // States of the Game Screen
@@ -51,8 +54,8 @@ public class Assets {
 
 
     static Bug bug; // Using array of bugs instead of only 1 bug
+    static Bug bug1;
+    static SBug bug2;
     static Bug roach;
     static Bigbug bigroach;
-
-
 }

@@ -18,9 +18,7 @@ import android.os.Handler;
 import android.view.SurfaceHolder;
 import android.widget.Toast;
 
-import com.rudanic.bugkiller.R;import java.util.Random;
-
-import static com.rudanic.bugkiller.Assets.score;
+import java.util.Random;
 
 public class MainThread extends Thread {
     private SurfaceHolder holder;
@@ -183,10 +181,51 @@ public class MainThread extends Thread {
         // Delete the original
         bmp = null;
 
+        // Load lady1
+        bmp = BitmapFactory.decodeResource (context.getResources(), R.drawable.lady1);
+        // Compute size of bitmap needed (suppose want width = 20% of screen width)
+        newWidth = (int)(canvas.getWidth() * 0.1f);
+        // What was the scaling factor to get to this?
+        scaleFactor = (float)newWidth / bmp.getWidth();
+        // Compute the new height
+        newHeight = (int)(bmp.getHeight() * scaleFactor);
+        // Scale it to a new size
+        Assets.lady1 = Bitmap.createScaledBitmap (bmp, newWidth, newHeight, false);
+        // Delete the original
+        bmp = null;
+
+        // Load lady2
+        bmp = BitmapFactory.decodeResource (context.getResources(), R.drawable.lady2);
+        // Compute size of bitmap needed (suppose want width = 20% of screen width)
+        newWidth = (int)(canvas.getWidth() * 0.1f);
+        // What was the scaling factor to get to this?
+        scaleFactor = (float)newWidth / bmp.getWidth();
+        // Compute the new height
+        newHeight = (int)(bmp.getHeight() * scaleFactor);
+        // Scale it to a new size
+        Assets.lady2 = Bitmap.createScaledBitmap (bmp, newWidth, newHeight, false);
+        // Delete the original
+        bmp = null;
+
+        // Load lady3
+        bmp = BitmapFactory.decodeResource (context.getResources(), R.drawable.lady3);
+        // Compute size of bitmap needed (suppose want width = 20% of screen width)
+        newWidth = (int)(canvas.getWidth() * 0.1f);
+        // What was the scaling factor to get to this?
+        scaleFactor = (float)newWidth / bmp.getWidth();
+        // Compute the new height
+        newHeight = (int)(bmp.getHeight() * scaleFactor);
+        // Scale it to a new size
+        Assets.lady3 = Bitmap.createScaledBitmap (bmp, newWidth, newHeight, false);
+        // Delete the original
+        bmp = null;
+
         // Create a bug
         Assets.bug = new Bug();
+        Assets.bug1 = new Bug();
         Assets.roach = new Bug();
         Assets.bigroach = new Bigbug();
+        Assets.bug2 = new SBug();
     }
 
     // Load specific background screen
@@ -277,6 +316,7 @@ public class MainThread extends Thread {
                     boolean bugKilled = Assets.bug.touched(canvas, touchx, touchy);
                     boolean roachkilled = Assets.roach.touched(canvas, touchx, touchy);
                     boolean bigroachkilled = Assets.bigroach.touched(canvas, touchx, touchy);
+                    boolean bugKilled2 = Assets.bug2.touched(canvas, touchx, touchy);
                     if (Assets.sound) {
                         if (bugKilled || roachkilled) {
                             if (i1 == 0)
@@ -289,7 +329,18 @@ public class MainThread extends Thread {
                             if (i1 == 0)
                                 Assets.soundPool.play(Assets.sound_thump, 1, 1, 1, 0, 1);
                         }
-                        if (bigroachkilled) {
+                    if (bugKilled2) {
+                        if (i1 == 0)
+                            Assets.soundPool.play(Assets.sound_squish1, 1, 1, 1, 0, 1);
+                        else if (i1 == 1)
+                            Assets.soundPool.play(Assets.sound_squish2, 1, 1, 1, 0, 1);
+                        else if (i1 == 2)
+                            Assets.soundPool.play(Assets.sound_squish3, 1, 1, 1, 0, 1);
+                    } else {
+                        if (i1 == 0)
+                            Assets.soundPool.play(Assets.sound_miss, 1, 1, 1, 0, 1);
+                    }
+                    if (bigroachkilled) {
                             Assets.soundPool.play(Assets.sound_squish3, 1, 1, 1, 0, 1);
                         } else {
                             Assets.soundPool.play(Assets.sound_thump, 1, 1, 1, 0, 1);
@@ -304,15 +355,15 @@ public class MainThread extends Thread {
                 // Bring a dead bug to life?
                 Assets.bug.birth(canvas);
 
-
-
-
                 Assets.roach.drawDead(canvas);
                 Assets.roach.move(canvas);
                 Assets.roach.birth(canvas);
                 Assets.bigroach.drawDead(canvas);
                 Assets.bigroach.move(canvas);
                 Assets.bigroach.birth(canvas);
+                Assets.bug2.drawDead(canvas);
+                Assets.bug2.move(canvas);
+                Assets.bug2.birth(canvas);
 
 
 
@@ -323,6 +374,7 @@ public class MainThread extends Thread {
                     Assets.state = Assets.GameState.GameEnding;
                 }
                 break;
+
             case GameEnding:
                 // Show a game over message
 
@@ -335,11 +387,11 @@ public class MainThread extends Thread {
                 // Goto next state
                 Assets.state = Assets.GameState.GameOver;
                 break;
+
             case GameOver:
                 loadBackground (canvas, R.drawable.game_over);
                 canvas.drawBitmap (Assets.background, 0, 0, null);
-
-                break;
+                 break;
         }
     }
 

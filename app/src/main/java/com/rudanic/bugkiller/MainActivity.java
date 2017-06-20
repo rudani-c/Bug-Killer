@@ -9,12 +9,11 @@ package com.rudanic.bugkiller;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.media.MediaPlayer;
+import android.os.Bundle;
 import android.preference.PreferenceManager;
 import android.support.v7.app.AppCompatActivity;
-import android.os.Bundle;
 import android.view.WindowManager;
-
-import com.rudanic.bugkiller.R;
+import android.widget.Toast;
 
 public class MainActivity extends AppCompatActivity {
     MainView v;
@@ -42,6 +41,7 @@ public class MainActivity extends AppCompatActivity {
             Assets.mp = MediaPlayer.create(this, R.raw.song);
             Assets.mp.setLooping(true);
         }
+        Toast.makeText(this, "Don't Kill Flying bug, They are Good", Toast.LENGTH_LONG).show();
     }
 
     @Override

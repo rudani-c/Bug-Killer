@@ -17,7 +17,7 @@ import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.view.WindowManager;
-import android.widget.Button;import com.rudanic.bugkiller.R;
+import android.widget.Button;
 
 
 public class TitleActivity extends AppCompatActivity implements View.OnClickListener {
@@ -48,7 +48,9 @@ public class TitleActivity extends AppCompatActivity implements View.OnClickList
             SharedPreferences.Editor ed = sp.edit();
             ed.putInt("newHighscore", Assets.score);
             ed.commit();
-            mHighscore("Congratulations! You made Highest Score");
+            if (sp.getInt("newHighscore", Assets.score) > 0) {
+                mHighscore("Your Highest Score is");
+            }
         }
 
     }
